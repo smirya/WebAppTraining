@@ -25,10 +25,9 @@ namespace WebApplication1.Models.MiddlewareModels
         {
             var token = context.Request.Query["token"];
 
-            if (token != _pattern)
+            if (string.IsNullOrWhiteSpace(token) || string.IsNullOrEmpty(token))
             {
                 context.Response.StatusCode = 403;
-                await context.Response.WriteAsync("Token is invalid!");
             }
             else
             {

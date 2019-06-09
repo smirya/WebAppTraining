@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.Models.MiddlewareModels;
 using WebApplication1.Controllers;
+using WebApplication1.Models.Extantions;
 
 namespace WebApplication1
 {
@@ -41,7 +42,9 @@ namespace WebApplication1
                        context.Request.Query["id"] == "7";
             }, HomeController.HandlId);
 
-            app.UseMiddleware<TokenMiddleware>("321");
+            app.UseMiddleware<TokenMiddleware>();
+
+            app.UseRouteToken();
 
             app.Run(async (context) =>
             {
